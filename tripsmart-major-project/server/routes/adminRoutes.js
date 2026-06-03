@@ -1,0 +1,10 @@
+import express from 'express';
+import { createHotel, hotels, stats, users } from '../controllers/adminController.js';
+import { protect, adminOnly } from '../middleware/auth.js';
+const router = express.Router();
+router.use(protect, adminOnly);
+router.get('/stats', stats);
+router.get('/users', users);
+router.get('/hotels', hotels);
+router.post('/hotels', createHotel);
+export default router;
